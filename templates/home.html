@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>FWI Prediction</title>
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+  <style>
+    body {
+      background-color: #f8f9fa;
+    }
+    .container {
+      max-width: 400px;
+      margin-top: 50px;
+    }
+    input, button {
+      margin-bottom: 10px;
+    }
+    h1, h2 {
+      text-align: center;
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <h1>FWI Prediction</h1>
+
+    <form action="{{ url_for('predict_datapoint') }}" method="post">
+      <input type="text" name="Temperature" placeholder="Temperature" required class="form-control">
+      <input type="text" name="RH" placeholder="RH" required class="form-control">
+      <input type="text" name="Ws" placeholder="Ws" required class="form-control">
+      <input type="text" name="Rain" placeholder="Rain" required class="form-control">
+      <input type="text" name="FFMC" placeholder="FFMC" required class="form-control">
+      <input type="text" name="DMC" placeholder="DMC" required class="form-control">
+      <input type="text" name="ISI" placeholder="ISI" required class="form-control">
+      <input type="text" name="Classes" placeholder="Classes" required class="form-control">
+      <input type="text" name="Region" placeholder="Region" required class="form-control">
+
+      <button type="submit" class="btn btn-dark btn-block">Predict</button>
+    </form>
+
+    {% if results %}
+      <h2 class="mt-4">THE FWI prediction is: {{ results }}</h2>
+    {% endif %}
+  </div>
+</body>
+</html>
